@@ -1,2 +1,173 @@
 /* CSS for SmartDart Index Page */
+/* Coded by HM */
+
+
+@font-face
+{
+	font-family: 'MullerBlack'
+	src:url('./font/MullerBlack.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'MullerBlackItalic'
+	src:url('./font/MullerBlackItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'MullerBold'
+	src:url('./font/MullerBold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'MullerBoldItalic'
+	src:url('./font/MullerBoldItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'MullerHeavyItalic'
+	src:url('./font/MullerHeavyItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'MullerLightItalic'
+	src:url('./font/MullerLightItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'AvenirNextLTPro-HeavyIt'
+	src:url('./font/AvenirNextLTPro-HeavyIt.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/*
+	//body
+	font-family: "AvenirNextLTPro-HeavyIt", "MullerBlack", "MullerBlackItalic", "MullerBold", "MullerBoldItalic", "MullerHeavyItalic", "MullerLightItalic";
+	text-align: center;
+	margin: 0px auto;
+	padding: 30px;
+*/
+
+body
+{
+	background-color:#FFFF21;
+}
+
+
+/*
+div {
+    background: url(bg_1120x1120_target.svg);
+    background-size: 1120px 1120px;
+    position: fixed;
+    top: 0px;
+	left: 0px;
+    background-repeat: no-repeat;
+}
+*/
+
+/*
+#backgroundimg 
+{
+    background: url(./img/bg_1120x1120_target.svg);
+    background-size: 1120px 1120px;
+    background-repeat: no-repeat;
+}
+*/
+
+#layer_fixed
+{
+	height: 768px;
+	width: 1024px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	/*
+	-webkit-box-shadow: 0 1px 2px 0 #777;
+	box-shadow: 0 1px 2px 0 #777;
+	background-color: #ccc;
+	*/
+}
+
+
+
+
+
+
+h1
+{
+    font-family: "MullerBlack";
+    font-size: 2.125em;
+    color: #D8267D;
+    line-height: 5px;
+}
+
+h2
+{
+    font-family: "MullerBlackItalic";
+    font-size: 50px;
+    line-height: 5px;
+}
+
+h3
+{
+    font-family: "MullerBold";
+    font-size: 40px;
+    color: #CC006A;
+    line-height: 5px;
+}
+
+h4
+{
+    font-family: "MullerBoldItalic";
+    font-size: 30px;
+    line-height: 5px;
+}
+
+h5
+{
+    font-family: "MullerHeavyItalic";
+    font-size: 40px;
+    line-height: 5px;
+}
+
+h6
+{
+    font-family: "MullerLightItalic";
+    font-size: 2.125em;
+    color: #D8267D;
+}
+
+p
+{
+    font-family: "AvenirNextLTPro-HeavyIt";
+    font-size: 2.125em;
+    color: #D8267D;
+}
+
+
+
+
+
+
+
+
 
