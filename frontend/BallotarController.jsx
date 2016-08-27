@@ -24,6 +24,8 @@ class BallotarController {
         console.log('ballotar_start');
         if (this.changedEventHandler != null)
             this.changedEventHandler('start', null, this.build_viewData(0, 1, 1, 1, 0, 0));
+        // $.getJSON("http://192.168.43.243/start", (data) => {
+        //     });
     }
 
     // timer_test() {
@@ -41,7 +43,8 @@ class BallotarController {
         //var controller = this;
         this.interval = setInterval(() => {
             //console.log('timer_test');
-            $.getJSON("./static/all.json", (data) => {
+            //./static/all.json
+            $.getJSON("http://192.168.43.243/all", (data) => {
                 //console.log('ballotar_start get');
                 // controller.dartDart = data;
                 //console.log(this);
