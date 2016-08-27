@@ -1,0 +1,39 @@
+{
+  "name": "bellota",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node webpack.server.js",
+    "build": "webpack -p --config webpack.product.config.js --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bellota-SmartDart/SmartDart-Client.git"
+  },
+  "author": "bellotar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bellota-SmartDart/SmartDart-Client/issues"
+  },
+  "homepage": "https://github.com/Bellota-SmartDart/SmartDart-Client#readme",
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "jquery.cookie": "^1.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.2.3",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.4",
+    "jeet": "^6.1.2",
+    "jsx-loader": "0.13.2",
+    "style-loader": "^0.13.1",
+    "stylus-loader": "^1.4.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "webpack": "^1.12.2",
+    "webpack-bundle-tracker": "^0.0.8",
+    "webpack-dev-server": "^1.12.1"
+  }
+}
