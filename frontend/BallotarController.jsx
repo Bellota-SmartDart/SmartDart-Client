@@ -70,7 +70,8 @@ class BallotarController {
         var equal_cnt = (cnt, next) => {
             if (cnt.current.player == next.current.player &&
                 cnt.current.round == next.current.round &&
-                cnt.current.set == next.current.set) {
+                cnt.current.set == next.current.set &&
+                cnt.current.gameStatus == next.current.gameStatus ) {
                 return true;
             } else {
                 return false;
@@ -109,9 +110,6 @@ class BallotarController {
             if (this.nextData == null) {
                 this.nextData = data;
             }
-
-            // if (data.current.gameStatus == 0)
-            //     console.log('data.current.gameStatus == 0');
 
             if (equal_cnt(this.nextData, this.cntData)) {
                 if (!equal_cnt(this.nextData, data)) {
