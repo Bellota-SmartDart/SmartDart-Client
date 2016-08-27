@@ -8,4 +8,4 @@ import BallotarController from "./BallotarController.jsx";
 
 var controller = new BallotarController();
 
-ReactDOM.render(<Main/>, document.getElementById('main-app'));
+ReactDOM.render(<Main BallotarController={controller}/>, document.getElementById('main-app'));
