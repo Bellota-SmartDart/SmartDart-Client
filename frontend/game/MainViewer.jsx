@@ -31,10 +31,10 @@ class MainViewr extends React.Component {
         controller.changedEventHandler = (ctr, data, view) => {
             //console.log(ctr);
             $('#testId').text(ctr);
-            console.log('Event : ' + ctr);
-            if (data != null)
-                console.log(data.current);
-            console.log(view);
+            // console.log('Event : ' + ctr);
+            // if (data != null)
+            //     console.log(data.current);
+            // console.log(view);
             $('#player1total').text(view.p1total);
             $('#player2total').text(view.p2total);
             $('#player').text('player' + view.player);
@@ -73,6 +73,7 @@ class MainViewr extends React.Component {
                 this.on_layout4_progress(3);
                 setTimeout(() => {
                     this.play_clap();
+                    $('#layer_fixed4_point').text('0');
                     $('#layer_fixed4_player').text('player1');
                     this.on_layout_viwer(3);
                     this.on_layout4_progress(0);
@@ -88,6 +89,7 @@ class MainViewr extends React.Component {
                 this.on_layout4_progress(3);
                 setTimeout(() => {
                     this.play_clap();
+                    $('#layer_fixed4_point').text('0');
                     $('#layer_fixed4_player').text('player2');
                     this.on_layout_viwer(2);
                     this.on_layout3('라운드를 변경합니다.');
@@ -214,7 +216,7 @@ class MainViewr extends React.Component {
     }
 
     render() {
-        console.log('MainViewr render');
+        //console.log('MainViewr render');
         // test 값을 알아보기 위함
         return (
             <div className="mainViewer">

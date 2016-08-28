@@ -21,9 +21,9 @@ class BallotarController {
     // start
     get_start() {
         //console.log('ballotar_start');
-        $.getJSON(this.address + "/start", (data) => {
+        // $.getJSON(this.address + "/start", (data) => {
                 
-            });
+        //     });
         if (this.changedEventHandler != null)
             this.changedEventHandler('start', null, this.build_viewData(0, 1, 1, 1, 0, 0));
     }
@@ -71,7 +71,7 @@ class BallotarController {
             var player = cnt.current.player;
             var round = cnt.current.round;
             var set = cnt.current.set - 1;
-            console.log('set : ', set);
+            //console.log('set : ', set);
             return data.current.point = data['player' + player]['round' + round][set];
         };
 
@@ -88,7 +88,7 @@ class BallotarController {
                     // 첫 시작
                     this.nextData = data;
                     controller.changedEventHandler('changeSet', data,
-                        this.build_viewData(data.player1.round1[0], 1, 1, 1,
+                        this.build_viewData(data.player1.round1[0], 1, 1, 2,
                             data.player1.round1[0], 0));
                 }
             } else if (!equal_cnt(this.nextData, data)) {
@@ -98,7 +98,7 @@ class BallotarController {
 
                 // 종료
                 if (data.current.gameStatus == 0) {
-                    console.log('data.current.gameStatus == 0');
+                    // console.log('data.current.gameStatus == 0');
                     controller.changedEventHandler('gameOver', data,
                         this.build_viewData(0,
                             1,
@@ -155,7 +155,7 @@ class BallotarController {
 
     stop_get_status() {
         clearInterval(this.interval)
-        console.log('stop_get_status');
+        //console.log('stop_get_status');
     }
 
     // skip
