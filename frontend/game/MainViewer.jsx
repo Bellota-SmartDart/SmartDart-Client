@@ -37,7 +37,7 @@ class MainViewr extends React.Component {
             // console.log(view);
             $('#player1total').text(view.p1total);
             $('#player2total').text(view.p2total);
-            $('#player').text('player' + view.player);
+            $('#layer_fixed4_player').text('player' + view.player);
             $('#round').text('round' + view.round);
             $('#set').text('set' + view.set);
 
