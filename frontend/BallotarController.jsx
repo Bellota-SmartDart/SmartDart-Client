@@ -1,11 +1,7 @@
-// import React from "react";
-// import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import cookie from 'react-cookie';
 
 class BallotarController {
     constructor(props) {
-
     }
 
     build_viewData(point, player, round, set, p1total, p2total) {
@@ -21,55 +17,25 @@ class BallotarController {
 
     // start
     get_start() {
-        console.log('ballotar_start');
+        //console.log('ballotar_start');
+        $.getJSON("http://192.168.43.253/start", (data) => {
+                
+            });
         if (this.changedEventHandler != null)
             this.changedEventHandler('start', null, this.build_viewData(0, 1, 1, 1, 0, 0));
-        // $.getJSON("http://192.168.43.243/start", (data) => {
-        //     });
     }
-
-    // timer_test() {
-    //     console.log('timer_test');
-    //     var controller = this;
-    //     $.getJSON("./static/all.json", (data) => {
-    //         console.log('ballotar_start get');
-    //         controller.dartDart = data;
-    //         console.log(controller);
-    //     });
-    // }
 
     // all
     get_loop_status() {
-        //var controller = this;
         this.interval = setInterval(() => {
-            //console.log('timer_test');
             //./static/all.json
             $.getJSON("http://192.168.43.253/all", (data) => {
-                //console.log('ballotar_start get');
-                // controller.dartDart = data;
-                //console.log(this);
                 this.is_changed_status(this, data);
             });
         }, 1000);
     }
 
     is_changed_status(controller, data) {
-        // current란 다음에 던질 값
-        // var get_current_point = (data) => {
-        //     var player = data.current.player;
-        //     var round = data.current.round;
-        //     var set = data.current.set;
-        //     var gameStatus = data.current.gameStatus;            
-        //     if (player == 1 && round == 1 && set == 1) {
-        //         data.current.point = 0;
-        //     } else if (player == 2 && round == 3 && set == 3 && gameStatus == 0) {
-        //         data.current.point = data['player'+player]['round'+round][set]; 
-        //     } else {
-        //         console.log(oldData);
-        //         data.current.point = data['player'+oldPlayer]['round'+oldRound][oldSet];
-        //     }
-        // };
-
         var equal_cnt = (cnt, next) => {
             if (cnt.current.player == next.current.player &&
                 cnt.current.round == next.current.round &&
@@ -181,33 +147,6 @@ class BallotarController {
                     return;
                 }
             }
-
-            // return;
-            // if (equal_cnt(this.cntData, data)) {
-            //     if (equal_cnt(this.nextData, data)) {
-            //         // 새로운 next 값이 들어온 경우
-            //         this.cntData = this.nextData;
-            //         this.nextData = data;
-            //     } else {
-            //         // 현재 같은 상태임
-            //         //this.nextData = data;
-            //         return;
-            //     }
-            // }
-
-            // //get_current_point(this.cntData, this.nextData);
-
-            // if (data.current.gameStatus == 0) {
-            //     controller.changedEventHandler('gameOver', data);
-            // } else if (this.oldData.current.player != data.current.player) {
-            //     controller.changedEventHandler('player', data);
-            // } else if (this.oldData.current.round != data.current.round) {
-            //     controller.changedEventHandler('round', data);
-            // } else if (this.oldData.current.set != data.current.set) {
-            //     controller.changedEventHandler('set', data);
-            // } else {
-            //     controller.changedEventHandler('continue', data);
-            // }
         }
     }
 

@@ -9,11 +9,9 @@ class MainViewr extends React.Component {
         //     this.currentTime = 0;
         //     this.play();
         // }, false);
-        // audio.loop = true;
-        // audio.play();
-        // var jeer = new Audio('./sound/btn_110x114_jeer.wav');
-        // var clap = new Audio('./sound/btn_110x114_clap.wav');
-
+        audio.loop = true;
+        audio.play();
+        
         this.props.BallotarController.get_loop_status();
         var controller = this.props.BallotarController;
 
@@ -22,24 +20,14 @@ class MainViewr extends React.Component {
             controller.get_start();
             setTimeout(() => {
                 this.on_layout_viwer(4);
-                $('layer_fixed4_svg1').children().css('fill', 'red');
+                //$('layer_fixed4_svg1').children().css('fill', 'red');
             }, 2000);
         });
+        $('#input_restart').click(() => {
+            window.location.reload();
+        });
 
-        // 화면 테스트
-        // var count = 1;
-        // setInterval(() => {
-        //     this.on_layout_viwer(count);
-        //     count += 1;
-        //     console.log(count);
-        //     if (count > 5)
-        //         count = 1;            
-        // }, 3000);
 
-        // setTimeout(() => {
-        //     console.log('stop_get_status');
-        //     controller.stop_get_status();
-        // }, 5000);
         controller.changedEventHandler = (ctr, data, view) => {
             //console.log(ctr);
             $('#testId').text(ctr);
@@ -72,6 +60,7 @@ class MainViewr extends React.Component {
             $('#layer_fixed4_point').text(view.point);
 
             if (ctr == 'start') {
+                this.on_layout4_progress(0);
                 set_msg('게임을 시작합니다.');
             } else if (ctr == 'skip') {
                 //set_msg
@@ -83,8 +72,10 @@ class MainViewr extends React.Component {
                 this.on_layout_viwer(4);
                 this.on_layout4_progress(3);
                 setTimeout(() => {
+                    this.play_clap();
                     $('#layer_fixed4_player').text('player1');
                     this.on_layout_viwer(3);
+                    this.on_layout4_progress(0);
                     setTimeout(() => {
                         set_msg('플레이어를 변경 완료');
                         this.on_layout_viwer(4);
@@ -96,11 +87,12 @@ class MainViewr extends React.Component {
                 this.on_layout_viwer(4);
                 this.on_layout4_progress(3);
                 setTimeout(() => {
+                    this.play_clap();
                     $('#layer_fixed4_player').text('player2');
                     this.on_layout_viwer(2);
                     this.on_layout3('라운드를 변경합니다.');
+                    this.on_layout4_progress(0);
                     setTimeout(() => {
-                        this.on_layout4_progress(0);
                         set_msg('라운드를 변경 완료');
                         this.on_layout_viwer(4);
                     }, 1500);
@@ -138,6 +130,22 @@ class MainViewr extends React.Component {
                 }, 1000);
             }
         };
+    }
+
+    play_jeer() {
+        var jeer = new Audio('./sound/btn_110x114_jeer.wav');
+        jeer.play();
+        setTimeout(() => {
+            jeer.pause();
+        }, 2000);
+    }
+
+    play_clap() {
+        var clap = new Audio('./sound/btn_110x114_clap.wav');
+        clap.play();
+        setTimeout(() => {
+            clap.pause();
+        }, 2000);
     }
 
     on_layout4_progress(progress) {
@@ -207,7 +215,7 @@ class MainViewr extends React.Component {
 
     render() {
         console.log('MainViewr render');
-        //document.getElementById("testId").innerHTML = "whatever";
+        // test 값을 알아보기 위함
         return (
             <div className="mainViewer">
                 Test UI
