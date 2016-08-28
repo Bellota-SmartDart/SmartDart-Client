@@ -36,7 +36,9 @@ jspm_packages
 
 # Optional eslint cache
 .eslintcache
+webpack-stats.json
 
 # Optional REPL history
 .node_repl_history
 HIGHLIGHTS BY 0
+webpack-stats.json
