@@ -16,11 +16,20 @@ var config = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loader: "style!css"
-            }, {
+                test: /\.jsx?$/,
+                exclude: /(node_modules|bower_components)/,
+                loaders: [
+                    'react-hot',
+                    'babel?presets[]=stage-0,presets[]=react,presets[]=es2015'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+            },
+            {
                 test: /\.styl$/,
-                loader: 'style-loader!css-loader!stylus-loader'
+                loaders: ['style', 'css', 'stylus?paths[]=frontend&paths[]=node_modules&paths[]=node_modules/jeet/stylus']
             }
         ]
     },
