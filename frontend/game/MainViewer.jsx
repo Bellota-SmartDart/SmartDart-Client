@@ -35,11 +35,12 @@ class MainViewr extends React.Component {
             // if (data != null)
             //     console.log(data.current);
             // console.log(view);
-            $('#player1total').text(view.p1total);
-            $('#player2total').text(view.p2total);
-            $('#layer_fixed4_player').text('player' + view.player);
-            $('#round').text('round' + view.round);
-            $('#set').text('set' + view.set);
+            $('#player1total').text('player1total: ' + view.p1total);
+            $('#player2total').text('player2total: ' + view.p2total);
+            $('#layer_fixed4_player').text('player:' + view.player);
+            $('#round').text('round: ' + view.round);
+            $('#set').text('set: ' + view.set);
+            $('#mainViewrData').text(data);
 
             var set_msg = (msg) => {
                 $('#msg').text('msg : ' + msg);
@@ -226,7 +227,8 @@ class MainViewr extends React.Component {
                 <div id="round"></div>
                 <div id="set"></div>
                 <div id="player1total"></div>
-                <div id="player2total"></div>
+                <div id="player2total"></div>                
+                <div id="mainViewrData"></div>
                 <div id="msg"></div>
             </div>
         );
