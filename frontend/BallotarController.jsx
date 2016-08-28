@@ -21,8 +21,7 @@ class BallotarController {
     // start
     get_start() {
         //console.log('ballotar_start');
-        // $.getJSON(this.address + "/start", (data) => {
-                
+        // $.getJSON(this.address + "/start", (data) =>                 
         //     });
         if (this.changedEventHandler != null)
             this.changedEventHandler('start', null, this.build_viewData(0, 1, 1, 1, 0, 0));
@@ -39,6 +38,7 @@ class BallotarController {
     }
 
     is_changed_status(controller, data) {
+        // 유틸리티성 함수
         var equal_cnt = (cnt, next) => {
             if (cnt.current.player == next.current.player &&
                 cnt.current.round == next.current.round &&
@@ -75,6 +75,7 @@ class BallotarController {
             return data.current.point = data['player' + player]['round' + round][set];
         };
 
+        
         if (controller.changedEventHandler != null) {
             if (this.cntData == null) {
                 this.cntData = data;
