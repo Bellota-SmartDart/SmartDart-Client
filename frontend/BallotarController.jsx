@@ -44,7 +44,7 @@ class BallotarController {
         this.interval = setInterval(() => {
             //console.log('timer_test');
             //./static/all.json
-            $.getJSON("http://192.168.43.243/all", (data) => {
+            $.getJSON("http://192.168.43.253/all", (data) => {
                 //console.log('ballotar_start get');
                 // controller.dartDart = data;
                 //console.log(this);

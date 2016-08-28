@@ -4,6 +4,16 @@ import cookie from 'react-cookie';
 
 class MainViewr extends React.Component {
     componentDidMount() {
+        var audio = new Audio('./sound/GameStart_Launching.mp3');
+        // audio.addEventListener('ended', () => {
+        //     this.currentTime = 0;
+        //     this.play();
+        // }, false);
+        // audio.loop = true;
+        // audio.play();
+        // var jeer = new Audio('./sound/btn_110x114_jeer.wav');
+        // var clap = new Audio('./sound/btn_110x114_clap.wav');
+
         this.props.BallotarController.get_loop_status();
         var controller = this.props.BallotarController;
 
@@ -53,69 +63,101 @@ class MainViewr extends React.Component {
                 return result;
             }
 
-            if (ctr == 'start') {
-                set_msg('게임을 시작합니다.');
-            } else if (ctr == 'skip') {
-                //set_msg
-            } else if (ctr == 'changePlayer') {
-                // 
-                set_msg('플레이어를 변경 중');
-                this.on_layout3('플레이어를 변경합니다.');
-                this.on_layout_viwer(4);
-                setTimeout(() => {
-                    this.on_layout_viwer(3);
-                    setTimeout(() => {
-                        set_msg('플레이어를 변경 완료');
-                        this.on_layout_viwer(4);
-                    }, 2000);
-                }, 1000);
-            } else if (ctr == 'changeRound') {
-                set_msg('라운드를 변경 중');
-                this.on_layout_viwer(4);
-                setTimeout(() => {
-                    this.on_layout_viwer(2);
-                    this.on_layout3('라운드를 변경합니다.');
-                    setTimeout(() => {
-                        set_msg('라운드를 변경 완료');
-                        this.on_layout_viwer(4);
-                    }, 2000);
-                }, 1000);
-            } else if (ctr == 'changeSet') {
-                set_msg('세트를 변경 중');
-                this.on_layout_viwer(4);
-                setTimeout(() => {
-                    set_msg('세트를 변경 완료');
-                }, 500);
-            } else if (ctr == 'gameOver') {
-                this.on_layout_viwer(5);
-                var p1r1 = sum(data.player1.round1);
-                var p1r2 = sum(data.player1.round2);
-                var p1r3 = sum(data.player1.round3);
-                var p2r1 = sum(data.player2.round1);
-                var p2r2 = sum(data.player2.round2);
-                var p2r3 = sum(data.player2.round3);
-                $('#Player1_ScoreRound1Sum').text(p1r1);
-                $('#Player1_ScoreRound2Sum').text(p1r2);
-                $('#Player1_ScoreRound3Sum').text(p1r3);
-                $('#Player1_ScoreSum').text((p1r1 + p1r2 + p1r3));
-                $('#Player1_ScoreSum2').text((p1r1 + p1r2 + p1r3));
-                $('#Player2_ScoreRound1Sum').text(p2r1);
-                $('#Player2_ScoreRound2Sum').text(p2r2);
-                $('#Player2_ScoreRound3Sum').text(p2r3);
-                $('#Player2_ScoreSum').text((p2r1 + p2r2 + p2r3));
-                $('#Player2_ScoreSum2').text((p2r1 + p2r2 + p2r3));
-                set_msg('게임 종료');
-            }
-
             this.on_layout2(view.round, 3);
             $('#layer_fixed3_p1total').text(view.p1total);
             $('#layer_fixed3_p2total').text(view.p2total);
             $('#Player1_ScoreSum').text(view.p1total);
             $('#Player2_ScoreSum').text(view.p2total);
 
-            $('#layer_fixed4_player').text('player' + view.player);
             $('#layer_fixed4_point').text(view.point);
+
+            if (ctr == 'start') {
+                set_msg('게임을 시작합니다.');
+            } else if (ctr == 'skip') {
+                //set_msg
+            } else if (ctr == 'changePlayer') {
+                // 
+                //clap.play();
+                set_msg('플레이어를 변경 중');
+                this.on_layout3('플레이어를 변경합니다.');
+                this.on_layout_viwer(4);
+                this.on_layout4_progress(3);
+                setTimeout(() => {
+                    $('#layer_fixed4_player').text('player1');
+                    this.on_layout_viwer(3);
+                    setTimeout(() => {
+                        set_msg('플레이어를 변경 완료');
+                        this.on_layout_viwer(4);
+                    }, 1500);
+                }, 1000);
+            } else if (ctr == 'changeRound') {
+                //clap.play();
+                set_msg('라운드를 변경 중');
+                this.on_layout_viwer(4);
+                this.on_layout4_progress(3);
+                setTimeout(() => {
+                    $('#layer_fixed4_player').text('player2');
+                    this.on_layout_viwer(2);
+                    this.on_layout3('라운드를 변경합니다.');
+                    setTimeout(() => {
+                        this.on_layout4_progress(0);
+                        set_msg('라운드를 변경 완료');
+                        this.on_layout_viwer(4);
+                    }, 1500);
+                }, 1000);
+            } else if (ctr == 'changeSet') {
+                set_msg('세트를 변경 중');
+                this.on_layout_viwer(4);
+                this.on_layout4_progress(view.set - 1);
+                setTimeout(() => {
+                    //this.on_layout4_progress(0);
+                    set_msg('세트를 변경 완료');
+                }, 500);
+            } else if (ctr == 'gameOver') {
+                this.on_layout_viwer(4);
+                setTimeout(() => {
+                    this.on_layout4_progress(0);
+                    this.on_layout_viwer(5);
+                    var p1r1 = sum(data.player1.round1);
+                    var p1r2 = sum(data.player1.round2);
+                    var p1r3 = sum(data.player1.round3);
+                    var p2r1 = sum(data.player2.round1);
+                    var p2r2 = sum(data.player2.round2);
+                    var p2r3 = sum(data.player2.round3);
+                    $('#Player1_ScoreRound1Sum').text(p1r1);
+                    $('#Player1_ScoreRound2Sum').text(p1r2);
+                    $('#Player1_ScoreRound3Sum').text(p1r3);
+                    $('#Player1_ScoreSum').text((p1r1 + p1r2 + p1r3));
+                    $('#Player1_ScoreSum2').text((p1r1 + p1r2 + p1r3));
+                    $('#Player2_ScoreRound1Sum').text(p2r1);
+                    $('#Player2_ScoreRound2Sum').text(p2r2);
+                    $('#Player2_ScoreRound3Sum').text(p2r3);
+                    $('#Player2_ScoreSum').text((p2r1 + p2r2 + p2r3));
+                    $('#Player2_ScoreSum2').text((p2r1 + p2r2 + p2r3));
+                    set_msg('게임 종료');
+                }, 1000);
+            }
         };
+    }
+
+    on_layout4_progress(progress) {
+        if (progress <= 0) {
+            $('#layer_fixed4_img1').attr('src', './img/btn_115x109_star1_B.svg');
+            $('#layer_fixed4_img2').attr('src', './img/btn_115x109_star2_B.svg');
+            $('#layer_fixed4_img3').attr('src', './img/btn_115x109_star3_B.svg');
+        } else if (progress == 1) {
+            $('#layer_fixed4_img1').attr('src', './img/btn_115x109_star1_W.svg');
+            $('#layer_fixed4_img2').attr('src', './img/btn_115x109_star2_B.svg');
+            $('#layer_fixed4_img3').attr('src', './img/btn_115x109_star3_B.svg');
+        } else if (progress == 2) {
+            $('#layer_fixed4_img1').attr('src', './img/btn_115x109_star1_W.svg');
+            $('#layer_fixed4_img2').attr('src', './img/btn_115x109_star2_W.svg');
+            $('#layer_fixed4_img3').attr('src', './img/btn_115x109_star3_B.svg');
+        } else if (progress >= 3) {
+            $('#layer_fixed4_img1').attr('src', './img/btn_115x109_star1_W.svg');
+            $('#layer_fixed4_img2').attr('src', './img/btn_115x109_star2_W.svg');
+            $('#layer_fixed4_img3').attr('src', './img/btn_115x109_star3_W.svg');
+        }
     }
 
     on_layout2(cntRound, totalRound) {
