@@ -2,6 +2,9 @@ import $ from 'jquery';
 
 class BallotarController {
     constructor(props) {
+        $.getJSON("./static/config.json", (data) => {
+            this.address = data.address;
+        });
     }
 
     build_viewData(point, player, round, set, p1total, p2total) {
@@ -18,7 +21,7 @@ class BallotarController {
     // start
     get_start() {
         //console.log('ballotar_start');
-        $.getJSON("http://192.168.43.253/start", (data) => {
+        $.getJSON(this.address + "/start", (data) => {
                 
             });
         if (this.changedEventHandler != null)
@@ -29,7 +32,7 @@ class BallotarController {
     get_loop_status() {
         this.interval = setInterval(() => {
             //./static/all.json
-            $.getJSON("http://192.168.43.253/all", (data) => {
+            $.getJSON(this.address + "/all", (data) => {
                 this.is_changed_status(this, data);
             });
         }, 1000);
